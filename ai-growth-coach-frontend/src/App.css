@@ -1,0 +1,113 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f5f7fb;
+}
+
+
+nav {
+  background: #1e293b;
+  color: white;
+  padding: 15px 30px;
+}
+
+
+nav h2 {
+  margin: 0;
+}
+
+
+.menu {
+  width: 220px;
+  min-height: 100vh;
+  background: #334155;
+  color: white;
+  padding: 20px;
+}
+
+
+.menu li {
+  list-style: none;
+  margin: 20px 0;
+  cursor: pointer;
+}
+
+
+.dashboard-card {
+  background: white;
+  padding: 25px;
+  border-radius: 12px;
+  margin-top: 20px;
+}
+
+main {
+  overflow-x: hidden;
+}
+
+
+h1 {
+  font-size: 40px;
+}
+
+
+.dashboard-card {
+  max-width: 500px;
+}
+
+
+svg {
+  max-width: 100%;
+}
+
+.dashboard-cards{
+
+display:flex;
+
+gap:20px;
+
+flex-wrap:wrap;
+
+}
+
+
+.card{
+
+background:#20212b;
+
+padding:20px;
+
+border-radius:15px;
+
+width:200px;
+
+text-align:center;
+
+box-shadow:0 0 10px #000;
+
+
+}
+
+
+.card h2{
+
+font-size:32px;
+
+color:#61dafb;
+
+}
+
+
+.card h3{
+
+color:white;
+
+}
+
+
+li{
+
+margin:10px;
+
+font-size:18px;
+
+}
