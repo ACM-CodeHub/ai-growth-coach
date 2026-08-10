@@ -1,80 +1,92 @@
+import { useNavigate } from "react-router-dom";
+import { Code, Brain, Flame, BookOpen, LogOut } from "lucide-react";
 import Card from "../components/Card";
-
+import "../App.css";
 
 function Dashboard(){
+const navigate = useNavigate();
+const user = JSON.parse(localStorage.getItem("user"));
+const logout = ()=>{
 
+localStorage.removeItem("user");
+navigate("/login");
+
+};
 
 return(
+<div className="dashboard">
+{/* Header */}
+
+<div className="dashboard-header">
 
 <div>
-
-
 <h1>
 AI Growth Dashboard 🚀
 </h1>
 
+<p>
+Welcome back, {user?.name}
+</p>
+</div>
+
+<button onClick={logout}>
+<LogOut size={18}/>
+Logout
+</button>
+
+</div>
+{/* Profile */}
+
+<div className="profile-card">
+<h2>
+👤 Profile
+</h2>
 
 <p>
-Track your coding progress with AI insights.
+Name: {user?.name}
 </p>
 
+<p>
+Email: {user?.email}
+</p>
 
+</div>
+{/* Stats */}
 
 <div className="dashboard-cards">
 
-
 <Card
-
-icon="💻"
-
+icon={<Code/>}
 title="Coding Score"
-
 value="75%"
-
 />
 
-
 <Card
-
-icon="🤖"
-
+icon={<Brain/>}
 title="AI Reviews"
-
 value="12 Completed"
-
 />
 
-
 <Card
-
-icon="🔥"
-
+icon={<Flame/>}
 title="Learning Streak"
-
 value="5 Days"
-
 />
-
 
 <Card
-
-icon="📚"
-
+icon={<BookOpen/>}
 title="Skills"
-
 value="Python, React"
-
 />
-
 
 </div>
+{/* AI Recommendations */}
 
-
+<div className="recommendations">
 
 <h2>
-AI Recommendations
+🤖 AI Recommendations
 </h2>
-
 
 <ul>
 
@@ -83,22 +95,25 @@ Practice Data Structures daily
 </li>
 
 <li>
-Improve React component design
+Build more React projects
 </li>
 
 <li>
-Solve 2 coding problems every day
+Improve problem solving skills
 </li>
 
+<li>
+Complete one AI challenge every week
+</li>
 
 </ul>
 
+</div>
 
 </div>
 
 )
 
 }
-
 
 export default Dashboard;

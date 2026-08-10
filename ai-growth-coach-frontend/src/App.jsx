@@ -26,12 +26,12 @@ function App() {
         <main style={{ padding: "20px", flex: 1 }}>
 
           <Routes>
-
-            <Route path="/" element={<Dashboard />} />
-
+            
+            <Route path="/register" element={<Register />} />
+            
             <Route path="/login" element={<Login />} />
 
-            <Route path="/register" element={<Register />} />
+            <Route path="/dashboard" element={<Dashboard />} />
 
             <Route path="/submit-code" element={<SubmitCode />} />
 

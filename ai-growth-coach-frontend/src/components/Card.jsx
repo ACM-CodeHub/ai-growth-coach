@@ -1,22 +1,17 @@
-function Card({title,value,icon}){
-
+function Card({icon,title,value}){
 return(
-
 <div className="card">
-
-<h3>
-{icon} {title}
-</h3>
-
-<h2>
-{value}
-</h2>
-
+<div className="card-icon">
+{icon}
 </div>
-
+<h3>
+{title}
+</h3>
+<p>
+{value}
+</p>
+</div>
 )
-
 }
-
 
 export default Card;

@@ -1,12 +1,16 @@
+/* ===== Global ===== */
+
 body {
   margin: 0;
   font-family: Arial, sans-serif;
-  background: #f5f7fb;
+  background: #0f172a;
+  color: white;
 }
 
+/* ===== Navbar ===== */
 
 nav {
-  background: #1e293b;
+  background: #020617;
   color: white;
   padding: 15px 30px;
 }
@@ -14,17 +18,18 @@ nav {
 
 nav h2 {
   margin: 0;
+  color: white;
 }
 
+/* ===== Sidebar Menu ===== */
 
 .menu {
   width: 220px;
   min-height: 100vh;
-  background: #334155;
+  background: #111827;
   color: white;
   padding: 20px;
 }
-
 
 .menu li {
   list-style: none;
@@ -32,82 +37,192 @@ nav h2 {
   cursor: pointer;
 }
 
-
-.dashboard-card {
-  background: white;
-  padding: 25px;
-  border-radius: 12px;
-  margin-top: 20px;
+.menu li a {
+  color: #c4b5fd;
+  text-decoration: none;
 }
+
+.menu li a:hover {
+  color: #38bdf8;
+}
+
+/* ===== Main ===== */
 
 main {
   overflow-x: hidden;
 }
 
-
 h1 {
   font-size: 40px;
+  color: white;
 }
 
+/* ===== Dashboard ===== */
+
+.dashboard {
+  padding: 30px;
+  min-height: 100vh;
+  background: #0f172a;
+}
+
+/* Header */
+
+.dashboard-header {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:25px;
+}
+
+.dashboard-header h1 {
+  font-size:40px;
+  margin:0;
+  color:white;
+}
+
+.dashboard-header p {
+  font-size:18px;
+  color:#cbd5e1;
+}
+
+.dashboard-header button {
+  display:flex;
+  align-items:center;
+  gap:8px;
+  background:#1e293b;
+  color:white;
+  border:none;
+  padding:12px 20px;
+  border-radius:10px;
+  cursor:pointer;
+  font-size:16px;
+}
+
+.dashboard-header button:hover {
+  background:#334155;
+}
+
+/* ===== Profile Card ===== */
+
+.profile-card {
+  background:#111827;
+  padding:25px;
+  border-radius:18px;
+  margin-bottom:30px;
+  color:white;
+  box-shadow:0 5px 20px rgba(0,0,0,0.5);
+}
+
+.profile-card h2 {
+  margin-top:0;
+  color:#f8fafc;
+}
+
+.profile-card p {
+  color:#cbd5e1;
+  font-size:18px;
+}
+
+/* ===== Dashboard Cards ===== */
+
+.dashboard-cards {
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:20px;
+  margin-top:30px;
+}
+
+.card {
+  background:#111827;
+  padding:25px;
+  border-radius:18px;
+  text-align:center;
+  color:white;
+  box-shadow:0 5px 20px rgba(0,0,0,0.5);
+  transition:0.3s;
+}
+
+.card:hover {
+  transform:translateY(-5px);
+  background:#1e293b;
+}
+
+.card svg {
+  width:40px;
+  height:40px;
+  color:#38bdf8;
+}
+
+.card h3 {
+  color:#e2e8f0;
+  font-size:20px;
+}
+
+.card p {
+  font-size:28px;
+  font-weight:bold;
+  color:#38bdf8;
+}
+
+/* ===== AI Recommendations ===== */
+
+.recommendations {
+  background:#111827;
+  margin-top:40px;
+  padding:25px;
+  border-radius:18px;
+  color:white;
+  box-shadow:0 5px 20px rgba(0,0,0,0.5);
+}
+
+.recommendations h2 {
+  color:#f8fafc;
+}
+
+.recommendations li {
+  margin:15px 0;
+  font-size:18px;
+  color:#cbd5e1;
+}
+
+/* ===== Old Card Compatibility ===== */
 
 .dashboard-card {
-  max-width: 500px;
+  background:#111827;
+  padding:25px;
+  border-radius:15px;
+  color:white;
 }
 
+.card-icon {
+  font-size:35px;
+  margin-bottom:15px;
+}
 
 svg {
-  max-width: 100%;
+  max-width:100%;
 }
+
+/* ===== Responsive ===== */
+
+@media(max-width:900px){
 
 .dashboard-cards{
-
-display:flex;
-
-gap:20px;
-
-flex-wrap:wrap;
+grid-template-columns:repeat(2,1fr);
+}
 
 }
 
+@media(max-width:600px){
 
-.card{
-
-background:#20212b;
-
-padding:20px;
-
-border-radius:15px;
-
-width:200px;
-
-text-align:center;
-
-box-shadow:0 0 10px #000;
-
-
+.dashboard-cards{
+grid-template-columns:1fr;
 }
 
-
-.card h2{
-
-font-size:32px;
-
-color:#61dafb;
-
+.dashboard-header{
+flex-direction:column;
+align-items:flex-start;
+gap:15px;
 }
-
-
-.card h3{
-
-color:white;
-
-}
-
-
-li{
-
-margin:10px;
-
-font-size:18px;
 
 }
