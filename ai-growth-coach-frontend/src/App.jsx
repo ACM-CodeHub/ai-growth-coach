@@ -1,7 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-import Navbar from "./components/Navbar";
-import Sidebar from "./components/Sidebar";
 
 import Dashboard from "./pages/Dashboard";
 import Login from "./pages/Login";
@@ -11,21 +9,24 @@ import AIReview from "./pages/AIReview";
 import History from "./pages/History";
 import GrowthReport from "./pages/GrowthReport";
 import SubmitCode from "./pages/SubmitCode";
+import LandingPage from "./pages/LandingPage";
 
 function App() {
 
   return (
     <BrowserRouter>
 
-      <Navbar />
+      
 
       <div style={{ display: "flex" }}>
 
-        <Sidebar />
+        
 
         <main style={{ padding: "20px", flex: 1 }}>
 
           <Routes>
+
+            <Route path="/" element={<LandingPage/>} />
             
             <Route path="/register" element={<Register />} />
             

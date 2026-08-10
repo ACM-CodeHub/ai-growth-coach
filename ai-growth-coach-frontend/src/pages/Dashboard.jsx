@@ -2,6 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { Code, Brain, Flame, BookOpen, LogOut } from "lucide-react";
 import Card from "../components/Card";
 import "../App.css";
+import DashboardLayout from "../components/DashboardLayout";
 
 function Dashboard(){
 const navigate = useNavigate();
@@ -14,6 +15,7 @@ navigate("/login");
 };
 
 return(
+    <DashboardLayout>
 <div className="dashboard">
 {/* Header */}
 
@@ -112,6 +114,7 @@ Complete one AI challenge every week
 
 </div>
 
+</DashboardLayout>
 )
 
 }
