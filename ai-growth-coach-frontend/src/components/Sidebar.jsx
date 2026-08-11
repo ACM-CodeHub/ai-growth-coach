@@ -5,7 +5,7 @@ function Sidebar(){
 
 return(
 
-<div className="menu">
+<div className="sidebar">
 
 <h3>Menu</h3>
 
