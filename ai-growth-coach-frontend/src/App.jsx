@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-
+import DashboardLayout from "./components/DashboardLayout";
 import Dashboard from "./pages/Dashboard";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
@@ -32,15 +32,49 @@ function App() {
             
             <Route path="/login" element={<Login />} />
 
-            <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/dashboard" 
+            element={
+            <DashboardLayout>
+            <Dashboard/>
+            </DashboardLayout>
+            }
+            />
 
-            <Route path="/submit-code" element={<SubmitCode />} />
 
-            <Route path="/ai-review" element={<AIReview />} />
+            <Route path="/submit-code" 
+            element={
+            <DashboardLayout>
+            <SubmitCode/>
+            </DashboardLayout>
+            }
+            />
 
-            <Route path="/history" element={<History />} />
 
-            <Route path="/growth-report" element={<GrowthReport />} />
+            <Route path="/ai-review" 
+            element={
+            <DashboardLayout>
+            <AIReview/>
+            </DashboardLayout>
+            }
+            />
+
+
+            <Route path="/history" 
+            element={
+            <DashboardLayout>
+            <History/>
+            </DashboardLayout>
+            }
+            />
+
+
+            <Route path="/growth-report" 
+            element={
+            <DashboardLayout>
+            <GrowthReport/>
+            </DashboardLayout>
+            }
+            />
             
           </Routes>
 
