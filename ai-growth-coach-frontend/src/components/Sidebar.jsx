@@ -5,14 +5,14 @@ function Sidebar(){
 
 return(
 
-<div className="menu">
+<div className="sidebar">
 
 <h3>Menu</h3>
 
 <ul>
 
 <li>
-<Link to="/">Dashboard</Link>
+<Link to="/dashboard">Dashboard</Link>
 </li>
 
 
