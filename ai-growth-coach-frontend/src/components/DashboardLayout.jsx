@@ -6,7 +6,7 @@ import "../App.css";
 
 const DashboardLayout = ({ children }) => {
 
-  const [showSidebar, setShowSidebar] = useState(true);
+  const [showSidebar, setShowSidebar] = useState(false);
 
 
   return (
