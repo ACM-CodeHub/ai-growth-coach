@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import Sidebar from "./Sidebar";
 import { Menu } from "lucide-react";
 import "../App.css";
