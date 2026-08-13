@@ -1,7 +1,8 @@
 from fastapi import FastAPI
 from app.database import supabase
-from app.routers import auth,submissions
+from app.routers import auth,submissions,dashboard_router,history_router
 from fastapi.middleware.cors import CORSMiddleware
+
 
 app = FastAPI(title="AI Growth Coach API", version="1.0.0")
 
@@ -19,6 +20,8 @@ app.add_middleware(
 # Include routers
 app.include_router(submissions.router)
 app.include_router(auth.router)
+app.include_router(dashboard_router.router)
+app.include_router(history_router.router)
 
 @app.get("/")
 def home():
