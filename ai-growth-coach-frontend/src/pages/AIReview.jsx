@@ -1,18 +1,34 @@
+import {useEffect, useState} from "react";
+
 function AIReview(){
+
+const [review,setReview] = useState(null);
+
+
+useEffect(()=>{
+
+const data = localStorage.getItem("ai_review");
+
+if(data){
+    setReview(JSON.parse(data));
+}
+
+},[]);
+
+
 
 return(
 
 <div className="dashboard">
 
+
 <h1>
-🤖 AI Review
+🤖 AI Code Review
 </h1>
 
 
-<p>
-Your AI generated code reviews will appear here.
-</p>
-
+{
+!review ?
 
 <div className="profile-card">
 
@@ -24,8 +40,102 @@ No Reviews Yet
 Submit your first code to get AI feedback.
 </p>
 
+</div>
+
+
+:
+
+
+<div>
+
+
+<div className="profile-card">
+
+<h2>
+Overall Score
+</h2>
+
+<h1>
+{review.review.overall_score}/100
+</h1>
+
 
 </div>
+
+
+
+<div className="profile-card">
+
+<h2>
+Summary
+</h2>
+
+<p>
+{review.review.summary}
+</p>
+
+
+</div>
+
+
+
+
+<h2>
+Issues Found
+</h2>
+
+
+
+{
+review.issues.map((issue)=>(
+
+
+<div 
+className="profile-card"
+key={issue.id}
+>
+
+
+<h3>
+⚠️ {issue.title}
+</h3>
+
+
+<p>
+<b>Category:</b> {issue.category}
+</p>
+
+
+<p>
+<b>Severity:</b> {issue.severity}
+</p>
+
+
+<p>
+{issue.description}
+</p>
+
+
+<p>
+<b>Suggestion:</b>
+<br/>
+{issue.suggestion}
+</p>
+
+
+
+</div>
+
+
+))
+}
+
+
+
+</div>
+
+}
+
 
 
 </div>
@@ -33,5 +143,6 @@ Submit your first code to get AI feedback.
 )
 
 }
+
 
 export default AIReview;
