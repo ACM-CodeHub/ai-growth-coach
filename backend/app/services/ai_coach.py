@@ -207,7 +207,7 @@ def get_previous_submissions(user_id: str, current_submission_id: str):
     """
     response = (
         supabase.table("submissions")
-        .select("id, code, language, title, description, created_at")
+        .select("id, code, language, title, created_at")
         .eq("user_id", user_id)
         .neq("id", current_submission_id)
         .order("created_at", desc=True)
