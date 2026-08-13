@@ -390,11 +390,11 @@ def call_groq(system_prompt: str, user_prompt: str, user_id: str):
         # Structured JSON output
         "response_format": REVIEW_RESPONSE_SCHEMA,
         # Low randomness gives more consistent reviews
-        "temperature": 0.2,
+        "temperature": 0.3,
         # GPT-OSS supports reasoning effort.
-        "reasoning_effort": "medium",
+        "reasoning_effort": "low",
         # Maximum generated tokens
-        "max_completion_tokens": 6000,
+        "max_completion_tokens": 2000,
         # Optional identifier for request tracking
         "user": user_id,
     }
