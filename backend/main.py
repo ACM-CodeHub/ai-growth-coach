@@ -2,7 +2,7 @@ from fastapi import FastAPI
 from app.database import supabase
 from app.routers import auth,submissions,dashboard_router,history_router
 from fastapi.middleware.cors import CORSMiddleware
-
+from app.routers import peer_reviews
 
 app = FastAPI(title="AI Growth Coach API", version="1.0.0")
 
@@ -22,6 +22,7 @@ app.include_router(submissions.router)
 app.include_router(auth.router)
 app.include_router(dashboard_router.router)
 app.include_router(history_router.router)
+app.include_router(peer_reviews.router)
 
 @app.get("/")
 def home():

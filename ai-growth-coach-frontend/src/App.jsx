@@ -11,16 +11,14 @@ import GrowthReport from "./pages/GrowthReport";
 import SubmitCode from "./pages/SubmitCode";
 import LandingPage from "./pages/LandingPage";
 
+import PeerReview from "./pages/PeerReview";
+
 function App() {
 
   return (
     <BrowserRouter>
 
-      
-
       <div style={{ display: "flex" }}>
-
-        
 
         <main style={{ padding: "20px", flex: 1 }}>
 
@@ -40,6 +38,10 @@ function App() {
             }
             />
 
+            <Route 
+            path="/peer_review"
+            element={<PeerReview/>}
+            />
 
             <Route path="/submit-code" 
             element={
@@ -49,7 +51,6 @@ function App() {
             }
             />
 
-
             <Route path="/ai-review" 
             element={
             <DashboardLayout>
@@ -58,7 +59,6 @@ function App() {
             }
             />
 
-
             <Route path="/history" 
             element={
             <DashboardLayout>
@@ -66,7 +66,6 @@ function App() {
             </DashboardLayout>
             }
             />
-
 
             <Route path="/growth-report" 
             element={
@@ -85,6 +84,5 @@ function App() {
     </BrowserRouter>
   );
 }
-
 
 export default App;

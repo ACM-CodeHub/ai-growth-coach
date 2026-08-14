@@ -423,3 +423,74 @@ button:disabled{
 opacity:0.6;
 cursor:not-allowed;
 }
+
+/* ===== Peer Review Page ===== */
+
+.peer-card{
+    margin-top:20px;
+}
+
+.peer-select{
+    width:100%;
+    padding:12px;
+    background:#222;
+    color:white;
+    border-radius:10px;
+    border:1px solid #444;
+}
+
+.rating{
+    display:flex;
+    gap:10px;
+    margin:15px 0;
+}
+
+.rating span{
+    font-size:30px;
+    color:#555;
+    cursor:pointer;
+}
+
+.rating .selected-star{
+    color:#facc15;
+}
+
+.peer-textarea{
+    width:100%;
+    height:120px;
+    background:#222;
+    color:white;
+    border-radius:12px;
+    padding:15px;
+    border:1px solid #444;
+    resize:none;
+}
+
+.primary-btn{
+    margin-top:15px;
+    width:100%;
+    padding:13px;
+    border-radius:10px;
+    border:none;
+    background:#6366f1;
+    color:white;
+    font-size:16px;
+    cursor:pointer;
+}
+
+.review-box{
+    background:#222;
+    border-radius:12px;
+    padding:15px;
+    margin-top:15px;
+}
+
+.review-score{
+    color:#facc15;
+    font-weight:bold;
+}
+
+.empty-text{
+    color:#999;
+    text-align:center;
+}

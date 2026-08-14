@@ -26,8 +26,7 @@ def review_submission(payload: CodeSubmissionRequest):
         insert_response = supabase.table("submissions").insert(submission_data).execute()
         
         if not insert_response.data:
-            raise HTTPException(status_code=400, detail="Failed to create submission record.")
-        
+            raise HTTPException(status_code=400, detail="Failed to create submission record.")        
         new_submission = insert_response.data[0]
         submission_id = new_submission["id"]
 
@@ -43,5 +42,26 @@ def review_submission(payload: CodeSubmissionRequest):
     except Exception as exc:
         raise HTTPException(
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail=str(exc)
+        )
+
+# Get submissions for peer review
+
+@router.get("/")
+def get_submissions_for_review():
+    try:
+        response = (
+            supabase
+            .table("submissions")
+            .select(
+                "id,title,language,created_at"
+            )
+            .execute()
+        )
+        return response.data or []
+    
+    except Exception as exc:
+        raise HTTPException(
+            status_code=500,
             detail=str(exc)
         )
