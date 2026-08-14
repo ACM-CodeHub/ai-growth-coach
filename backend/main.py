@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 from app.database import supabase
-from app.routers import auth,submissions,dashboard_router,history_router
+from app.routers import auth,submissions,dashboard_router,history_router,growth_report
 from fastapi.middleware.cors import CORSMiddleware
 from app.routers import peer_reviews
 
@@ -23,6 +23,7 @@ app.include_router(auth.router)
 app.include_router(dashboard_router.router)
 app.include_router(history_router.router)
 app.include_router(peer_reviews.router)
+app.include_router(growth_report.router)
 
 @app.get("/")
 def home():

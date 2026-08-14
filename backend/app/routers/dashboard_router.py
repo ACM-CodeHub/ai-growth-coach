@@ -36,7 +36,7 @@ def get_dashboard_stats(user_id: str):
         # 3. Calculate Streak safely
         submission_dates = set()
         for sub in submissions:
-            created_at = sub.get("created_at") or sub.get("submitted_at")
+            created_at = sub.get("created_at") 
             if created_at:
                 try:
                     sub_date = datetime.fromisoformat(created_at.replace("Z", "+00:00")).date()
@@ -63,7 +63,6 @@ def get_dashboard_stats(user_id: str):
         skills_str = ", ".join(unique_langs) if unique_langs else "General Programming"
 
         # 5. Fetch Database-Driven AI Recommendations from `ai_issues`
-        # Hum sirf un issues ko utha rahe hain jo user ki apni submissions se linked hain
         issues_res = supabase.table("ai_issues").select("category, severity").execute()
         all_issues = issues_res.data or []
 
@@ -73,16 +72,13 @@ def get_dashboard_stats(user_id: str):
         critical_issues = [i for i in all_issues if i.get("severity") in ["critical", "high"]]
         
         if critical_issues:
-            # Agar koi critical issue hai, toh uski category ka mashwara do
             categories = list(set(i.get("category") for i in critical_issues if i.get("category")))
             for cat in categories[:2]:
                 dynamic_recommendations.append(f"Focus on improving your {cat} logic. High-severity issues detected!")
         
-        # Agar coding score kam hai
         if avg_score > 0 and avg_score < 75:
             dynamic_recommendations.append("Your coding score is currently below 75%. Try focusing on clean code practices.")
         
-        # Agar koi issue nahi mila, toh default positive messages
         if len(dynamic_recommendations) < 2:
             dynamic_recommendations.extend([
                 "Review past issues to improve your overall code structure and score.",
@@ -94,7 +90,7 @@ def get_dashboard_stats(user_id: str):
             "total_reviews": total_reviews,
             "streak": current_streak,
             "skills": skills_str,
-            "recommendations": dynamic_recommendations[:3] # Sirf top 3 dikhayein
+            "recommendations": dynamic_recommendations[:3] #top 3
         }
 
     except Exception as e:

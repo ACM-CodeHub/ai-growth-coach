@@ -38,18 +38,11 @@ function Dashboard() {
         
         const data = response.data;
         setDashboardData({
-          codingScore: data.coding_score ? `${data.coding_score}%` : "75%",
+          codingScore: `${data.coding_score}%`,
           totalReviews: `${data.total_reviews || 0} Completed`,
-          streak: `${data.streak || 0} Days`,
-          skills: data.skills || "Python, React",
-          recommendations: data.recommendations?.length > 0 
-            ? data.recommendations 
-            : [
-                "Practice Data Structures daily",
-                "Build more React projects",
-                "Improve problem solving skills",
-                "Complete one AI challenge every week"
-              ]
+          streak: `${data.streak || 0} Day(s)`,
+          skills: data.skills,
+          recommendations: data.recommendations
         });
       } catch (error) {
         console.error("Failed to fetch dashboard metrics, using defaults:", error);
