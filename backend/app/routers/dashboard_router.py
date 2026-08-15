@@ -96,3 +96,96 @@ def get_dashboard_stats(user_id: str):
     except Exception as e:
         print("Dashboard Error:", str(e))
         raise HTTPException(status_code=500, detail=str(e))
+
+@router.get("/ai-review/{user_id}")
+def get_user_ai_review(user_id: str):
+    try:
+
+        # --------------------------------------------------
+        # 1. Get latest submission of this user
+        # --------------------------------------------------
+
+        sub_response = (
+            supabase.table("submissions")
+            .select("*")
+            .eq("user_id", user_id)
+            .order("created_at", desc=True)
+            .limit(1)
+            .execute()
+        )
+
+        if not sub_response.data:
+            return None
+
+        latest_submission = sub_response.data[0]
+
+        submission_id = latest_submission["id"]
+
+        # --------------------------------------------------
+        # 2. Get AI review for this submission
+        # --------------------------------------------------
+
+        review_response = (
+            supabase.table("ai_reviews")
+            .select("*")
+            .eq("submission_id", submission_id)
+            .limit(1)
+            .execute()
+        )
+
+        if not review_response.data:
+            return {
+                "title": latest_submission.get("title") or "Untitled Submission",
+                "language": latest_submission.get("language") or "Unknown",
+                "code": latest_submission.get("code") or "",
+                "overall_score": 0,
+                "summary": "AI review is not available yet.",
+                "issues": []
+            }
+
+        ai_review = review_response.data[0]
+
+        review_id = ai_review["id"]
+
+        # --------------------------------------------------
+        # 3. Get AI issues
+        # --------------------------------------------------
+
+        issues_response = (
+            supabase.table("ai_issues")
+            .select("*")
+            .eq("review_id", review_id)
+            .execute()
+        )
+
+        issues = issues_response.data or []
+
+        # --------------------------------------------------
+        # 4. Return complete review
+        # --------------------------------------------------
+
+        return {
+            "submission_id": submission_id,
+            "review_id": review_id,
+
+            "title": latest_submission.get("title") or "Untitled Submission",
+            "language": latest_submission.get("language") or "Unknown",
+            "code": latest_submission.get("code") or "",
+
+            "overall_score": ai_review.get("overall_score", 0),
+            "summary": ai_review.get(
+                "summary",
+                "No summary available."
+            ),
+
+            "issues": issues
+        }
+
+    except Exception as exc:
+
+        print("AI Review Fetch Error:", str(exc))
+
+        raise HTTPException(
+            status_code=500,
+            detail=str(exc)
+        )
