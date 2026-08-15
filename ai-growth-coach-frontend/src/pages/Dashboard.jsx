@@ -4,7 +4,6 @@ import { Code, Brain, Flame, BookOpen, LogOut, LoaderCircle } from "lucide-react
 import Card from "../components/Card";
 import API from "../services/api";
 import "../App.css";
-import DashboardLayout from "../components/DashboardLayout";
 
 function Dashboard() {
   const navigate = useNavigate();
@@ -55,7 +54,6 @@ function Dashboard() {
   }, [navigate, user]);
 
   return (
-    <DashboardLayout>
       <div className="dashboard">
         {/* Header */}
         <div className="dashboard-header">
@@ -118,7 +116,6 @@ function Dashboard() {
           </ul>
         </div>
       </div>
-    </DashboardLayout>
   );
 }
 

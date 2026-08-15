@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 import { Clock, Code, Award, LoaderCircle } from "lucide-react";
 import API from "../services/api";
 import "../App.css";
-import DashboardLayout from "../components/DashboardLayout";
 
 function History() {
   const navigate = useNavigate();
@@ -33,7 +32,7 @@ function History() {
   }, [navigate, user]);
 
   return (
-    <DashboardLayout>
+   
       <div className="dashboard">
         <div className="dashboard-header">
           <div>
@@ -74,7 +73,7 @@ function History() {
           </div>
         )}
       </div>
-    </DashboardLayout>
+    
   );
 }
 

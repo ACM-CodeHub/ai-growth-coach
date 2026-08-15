@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 import { LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer, BarChart, Bar } from "recharts";
 import { LoaderCircle, TrendingUp, AlertTriangle } from "lucide-react";
 import API from "../services/api";
-import DashboardLayout from "../components/DashboardLayout";
 import "../App.css";
 
 function GrowthReport() {
@@ -34,7 +33,7 @@ function GrowthReport() {
   }, [navigate, user]);
 
   return (
-    <DashboardLayout>
+    
       <div className="dashboard">
         <div className="dashboard-header">
           <div>
@@ -93,7 +92,7 @@ function GrowthReport() {
           </div>
         )}
       </div>
-    </DashboardLayout>
+    
   );
 }
 
