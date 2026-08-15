@@ -14,17 +14,22 @@ function PeerReview() {
     const [reviews, setReviews] = useState([]);
     const [loading, setLoading] = useState(false);
 
-    const API_URL = "http://127.0.0.1:8000";
-    const fetchSubmissions = async () => {
+    const fetchReviews = async () => {
+    if(!submissionId) return;
 
     try {
-        const response = await api.get("/submissions/");
-        setSubmissions(response.data);
+        const response = await api.get(
+            `/peer-reviews/${submissionId}`
+        );
+
+        setReviews(response.data.reviews || []);
     }
     catch(error){
-        console.log(error);
+        console.log(
+            error.response?.data || error
+        );
     }
-    };
+};
 
     useEffect(()=>{
         fetchSubmissions();
